@@ -3,93 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Álgebrabot - Tu Asistente de Álgebra</title>
-    
-    <!-- Metadatos para SEO -->
-    <meta name="description" content="Álgebrabot, tu asistente virtual para ayudarte con el curso de Álgebra. Accede a rúbricas, fichas de trabajo, simulacros de evaluación y más.">
-    <meta name="author" content="Álgebrabot Team">
-    <meta name="keywords" content="álgebra, chatbot, educación, Voiceflow, asistente virtual">
-    
-    <!-- Metadatos para redes sociales -->
-    <meta property="og:title" content="Álgebrabot - Tu Asistente de Álgebra">
-    <meta property="og:description" content="Interactúa con Álgebrabot y obtén ayuda con tu curso de Álgebra.">
-    <meta property="og:image" content="IMAGEN.webp">
-    <meta property="og:type" content="website">
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-
-        h1 {
-            color: #2c3e50;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
-        }
-    </style>
+    <title>Álgebrabot</title>
 </head>
 <body>
-
-    <h1>Bienvenido a ÁLGEBRABOT</h1>
+    <h1>Bienvenido a nuestro ÁLGEBRABOT</h1>
     <p>Interactúa con el chatbot utilizando el widget a continuación:</p>
 
-    <img src="IMAGEN.webp" alt="Imagen representativa de Álgebrabot, tu asistente de Álgebra">
-
-    <!-- Contenedor donde se cargará el chatbot -->
-    <div id="chatbot-container"></div>
+    <img src="https://drive.google.com/uc?export=view&id=1RcqP7qExmyO1RtoMNItFT_E2iZWWxuHy" alt="Algebrabot" style="max-width: 100%; height: auto;">
 
     <!-- Script del chatbot de Voiceflow -->
-    <script defer>
-        document.addEventListener("DOMContentLoaded", function () {
-            try {
-                var v = document.createElement("script");
-                v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-                v.type = "text/javascript";
-                v.async = true;
-
-                v.onload = function () {
-                    if (window.voiceflow && window.voiceflow.chat) {
-                        window.voiceflow.chat.load({
-                            verify: { projectID: "679b9449856ad419ecfaabba" },
-                            url: "https://general-runtime.voiceflow.com",
-                            versionID: "production"
-                        });
-                        console.log("✅ Chatbot cargado correctamente.");
-                    } else {
-                        console.error("⚠️ Error: Voiceflow no está definido correctamente.");
-                    }
-                };
-
-                v.onerror = function () {
-                    console.error("⚠️ Error al cargar el script de Voiceflow.");
-                };
-
-                document.body.appendChild(v);
-            } catch (error) {
-                console.error("⚠️ Error inesperado al cargar el chatbot:", error);
-            }
+    <script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '679b9449856ad419ecfaabba' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production'
         });
-    </script>
+      }
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
 
     <!-- Script para mantener la pestaña activa -->
     <script>
-        function keepAlive() {
-            console.log("Manteniendo la pestaña activa:", new Date().toLocaleTimeString());
-        }
+      // Función para mantener la pestaña activa
+      function keepAlive() {
+        console.log("Manteniendo la pestaña activa: " + new Date().toLocaleTimeString());
+      }
 
-        document.addEventListener("visibilitychange", function () {
-            if (!document.hidden) {
-                keepAlive();
-                setInterval(keepAlive, 300000); // Cada 5 minutos
-            }
-        });
+      // Ejecutar la función cada 5 minutos (300,000 milisegundos)
+      setInterval(keepAlive, 300000);
     </script>
-
 </body>
 </html>
+
+
+
