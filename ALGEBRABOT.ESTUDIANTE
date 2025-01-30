@@ -41,26 +41,40 @@
 
     <img src="IMAGEN.webp" alt="Imagen representativa de Álgebrabot, tu asistente de Álgebra">
 
+    <!-- Contenedor donde se cargará el chatbot -->
+    <div id="chatbot-container"></div>
+
     <!-- Script del chatbot de Voiceflow -->
-    <script type="text/javascript">
-        (function(d, t) {
-            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-            v.onload = function() {
-                try {
-                    window.voiceflow.chat.load({
-                        verify: { projectID: '679b9449856ad419ecfaabba' },
-                        url: 'https://general-runtime.voiceflow.com',
-                        versionID: 'production'
-                    });
-                } catch (error) {
-                    console.error("Error al cargar el chatbot:", error);
-                }
-            };
-            v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
-            v.type = "text/javascript"; 
-            v.async = true;
-            s.parentNode.insertBefore(v, s);
-        })(document, 'script');
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            try {
+                var v = document.createElement("script");
+                v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+                v.type = "text/javascript";
+                v.async = true;
+
+                v.onload = function () {
+                    if (window.voiceflow && window.voiceflow.chat) {
+                        window.voiceflow.chat.load({
+                            verify: { projectID: "679b9449856ad419ecfaabba" },
+                            url: "https://general-runtime.voiceflow.com",
+                            versionID: "production"
+                        });
+                        console.log("✅ Chatbot cargado correctamente.");
+                    } else {
+                        console.error("⚠️ Error: Voiceflow no está definido correctamente.");
+                    }
+                };
+
+                v.onerror = function () {
+                    console.error("⚠️ Error al cargar el script de Voiceflow.");
+                };
+
+                document.body.appendChild(v);
+            } catch (error) {
+                console.error("⚠️ Error inesperado al cargar el chatbot:", error);
+            }
+        });
     </script>
 
     <!-- Script para mantener la pestaña activa -->
@@ -69,8 +83,7 @@
             console.log("Manteniendo la pestaña activa:", new Date().toLocaleTimeString());
         }
 
-        // Evitar que se ejecute en pestañas en segundo plano para optimización
-        document.addEventListener("visibilitychange", function() {
+        document.addEventListener("visibilitychange", function () {
             if (!document.hidden) {
                 keepAlive();
                 setInterval(keepAlive, 300000); // Cada 5 minutos
