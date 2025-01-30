@@ -1,1 +1,1 @@
-# ALGEBRABOT.estudiante
+# ALGEBRABOT.student
